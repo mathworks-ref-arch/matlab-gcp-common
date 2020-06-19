@@ -1,0 +1,124 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.mathworks.sdk</groupId>
+  <artifactId>google-gcp-common-sdk</artifactId>
+  <packaging>jar</packaging>
+  <version>0.1.0</version>
+  <name>google-gcp-common-sdk</name>
+  <url>http://www.mathworks.com</url>
+  
+  <dependencies>
+      
+    <dependency>
+       <groupId>junit</groupId>
+       <artifactId>junit</artifactId>
+       <version>3.8.1</version>
+       <scope>test</scope>
+    </dependency>
+    
+    <!--google-cloud-storage -->
+    <dependency>
+        <groupId>com.google.cloud</groupId>
+        <artifactId>google-cloud-storage</artifactId>
+        <version>1.99.0</version>
+    </dependency>
+    
+    
+</dependencies>
+
+  <organization>
+      <name>MathWorks</name>
+      <url>http://www.mathworks.com</url>
+  </organization>
+  
+  <build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.8.1</version>
+            <configuration>
+                <source>1.7</source>
+                <target>1.7</target>
+            </configuration>
+        </plugin>
+        
+        <plugin>
+            <!-- Build an executable JAR -->
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <version>3.0.0</version>
+            <configuration>
+                <archive>
+                    <manifest>
+                        <mainClass>com.mathworks.sdk.gcp.Version</mainClass>
+                    </manifest>
+                </archive>
+                <outputDirectory>../MATLAB/lib/jar</outputDirectory>
+            </configuration>
+        </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-shade-plugin</artifactId>
+            <version>3.2.0</version>
+            <executions>
+                <execution>
+                    <phase>package</phase>
+                    <goals>
+                        <goal>shade</goal>
+                    </goals>
+                    <configuration>
+                        <filters>
+                            <filter>
+                                <artifact>*:*</artifact>
+                                <excludes>
+                                    <exclude>META-INF/*.SF</exclude>
+                                    <exclude>META-INF/*.DSA</exclude>
+                                    <exclude>META-INF/*.RSA</exclude>
+                                </excludes>
+                            </filter>
+                        </filters>
+                        <relocations>
+                            <relocation>
+                                <pattern>org.apache.http</pattern>
+                                <shadedPattern>shaded.org.apache.http</shadedPattern>
+                            </relocation>
+                            <relocation>
+                                <pattern>com.google.cloud.http.HttpTransportOption</pattern>
+                                <shadedPattern>shaded.com.google.http.HttpTransportOption</shadedPattern>
+                            </relocation>
+
+                            <relocation>
+                                <pattern>com.google.common</pattern>
+                                <shadedPattern>shaded.com.google.common</shadedPattern>
+                            </relocation>
+                            <relocation>
+                                <pattern>com.google.protobuf</pattern>
+                                <shadedPattern>shaded.com.google.protobuf</shadedPattern>
+                            </relocation>
+                            <relocation>
+                                <pattern>com.google.api-client</pattern>
+                                <shadedPattern>shaded.com.google.api-client</shadedPattern>
+                            </relocation>
+                            <relocation>
+                                <pattern>com.google.http-client</pattern>
+                                <shadedPattern>shaded.com.google.http-client</shadedPattern>
+                            </relocation>
+                            <relocation>
+                                <pattern>com.google.guava</pattern>
+                                <shadedPattern>shaded.com.google.guava</shadedPattern>
+                            </relocation>
+                            <relocation>
+                                <pattern>com.google.oauth-client</pattern>
+                                <shadedPattern>shaded.com.google.oauth-client</shadedPattern>
+                            </relocation>
+            	</relocations> 			
+			</configuration>
+			</execution>
+	    	</executions>
+       </plugin>	    
+    </plugins>
+  </build>
+</project>
+              
