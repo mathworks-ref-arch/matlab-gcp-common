@@ -1,11 +1,11 @@
 # MATLAB® Interface *for Google Cloud Platform* Common Package
 
-Common components used across MATLAB® interfaces for Google Cloud Platform™ services, for example Google Cloud Storage™.
+Common components used across MATLAB® interfaces for Google Cloud Platform™ services, for example Google Cloud Storage™ and Google BigQuery™.
 Please refer to the [parent project](https://github.com/mathworks-ref-arch/mathworks-gcp-support) for usage instructions.
 
 ## Requirements
 ### MathWorks products
-* Requires MATLAB release R2017b or later
+* Requires MATLAB release R2018a or later
 
 ### 3rd party products
 * Google Cloud access

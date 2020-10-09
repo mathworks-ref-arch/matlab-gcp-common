@@ -7,31 +7,37 @@
   <version>0.1.0</version>
   <name>google-gcp-common-sdk</name>
   <url>http://www.mathworks.com</url>
-  
+
   <dependencies>
-      
+
     <dependency>
        <groupId>junit</groupId>
        <artifactId>junit</artifactId>
        <version>3.8.1</version>
        <scope>test</scope>
     </dependency>
-    
+
     <!--google-cloud-storage -->
     <dependency>
         <groupId>com.google.cloud</groupId>
         <artifactId>google-cloud-storage</artifactId>
         <version>1.99.0</version>
     </dependency>
-    
-    
+
+    <!--google-biquery-->
+    <dependency>
+        <groupId>com.google.cloud</groupId>
+        <artifactId>google-cloud-bigquery</artifactId>
+        <version>1.99.0</version>
+    </dependency> 
+
 </dependencies>
 
   <organization>
       <name>MathWorks</name>
       <url>http://www.mathworks.com</url>
   </organization>
-  
+
   <build>
     <plugins>
         <plugin>
@@ -43,7 +49,7 @@
                 <target>1.7</target>
             </configuration>
         </plugin>
-        
+
         <plugin>
             <!-- Build an executable JAR -->
             <groupId>org.apache.maven.plugins</groupId>
@@ -113,12 +119,11 @@
                                 <pattern>com.google.oauth-client</pattern>
                                 <shadedPattern>shaded.com.google.oauth-client</shadedPattern>
                             </relocation>
-            	</relocations> 			
+            	</relocations>
 			</configuration>
 			</execution>
 	    	</executions>
-       </plugin>	    
+       </plugin>
     </plugins>
   </build>
 </project>
-              
